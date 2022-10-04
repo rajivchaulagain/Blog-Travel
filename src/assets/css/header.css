@@ -1,0 +1,37 @@
+.header{
+    background: url('../images/Blog_title_image.jpg');
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
+    width: 100%;
+}
+
+/* navbar */
+
+.navbar{
+    background-color: transparent !important;
+    position: absolute !important;
+    top: 0;
+    width: 100%;
+    z-index: 1 !important;
+    padding-top: 3rem;
+}
+
+.navbar-nav{
+    align-items: center;
+}
+
+.navbar .nav-link{
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+}
+
+.navbar .navbar-brand{
+    color: #fff;
+}
