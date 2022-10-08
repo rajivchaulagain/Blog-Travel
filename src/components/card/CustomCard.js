@@ -1,22 +1,23 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import img from '../../assets/images/Blog_title_image.jpg'
+import { Link } from 'react-router-dom';
 
-function CustomCard() {
+function CustomCard({item}) {
     return (
+        <Link to={`/blog/${item._id}`}>
         <Card>
             <Card.Img variant="top" src="https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg" />
             <Card.Body className="px-5">
                 <Card.Title>
-                    Trip that you'll never ever forget
+                    {item.title}
                 </Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    {item.description.slice(0 , 200)}
                 </Card.Text>
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>
         </Card>
+        </Link>
     );
 }
 
