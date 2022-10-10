@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
 
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </div>
     )
 }

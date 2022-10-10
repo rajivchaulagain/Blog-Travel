@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import Routes from './routes';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,6 +13,9 @@ import Register from './pages/auth/Register';
 import { ToastContainer } from 'react-toastify';
 import AddEdit from './pages/dashboard/AddEdit';
 import Description from './pages/Description';
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
+import Signout from './pages/auth/Signout';
+import Fallback from './components/fallback/Fallback';
 
 // react query
 const queryClient = new QueryClient({
@@ -28,21 +29,29 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ToastContainer />
-        {/* our app goes here */}
-        <Routes>
+      <Suspense fallback={<Fallback />}>
+        <QueryClientProvider client={queryClient}>
+          <ScrollToTop />
+          {/* our app goes here */}
+          <Routes />
+          {/* <Routes>
           <Route index element={<Home />} />
           <Route path="/blog/:id" element={<Description />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/blog/add' element={<AddEdit />} />
-          <Route path='/blog/edit/:id' element={<AddEdit />} />
+          <Route path="dashboard" element={<Dashboard />}>
+          <Route path='blog/add' element={<AddEdit />}/>
+          <Route path='blog/edit/:id' element={<AddEdit />} />
+          </Route>
           <Route path='/user/login' element={<Login />} />
+          <Route path='/user/sign-out' element={<Signout />} />
           <Route path='/user/register' element={<Register />} />
-        </Routes>
-      </QueryClientProvider>
+        </Routes> */}
+          <ToastContainer />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </Suspense>
     </>
   )
 }

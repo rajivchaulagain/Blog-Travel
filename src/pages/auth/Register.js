@@ -20,9 +20,9 @@ const Register = () => {
   } = useMutation(authServices.register, {
     onSuccess: (data) => {
       setAuth(data)
-      // navigate("/dashboard")
+      navigate("/dashboard")
       toast.success('User registered successfully')
-      // document.location.reload();
+      document.location.reload();
     },
     onError: (err) => {
       toast.error(`${err}`)

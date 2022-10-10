@@ -6,7 +6,7 @@ function CustomCard({item}) {
     return (
         <Link to={`/blog/${item._id}`}>
         <Card>
-            <Card.Img variant="top" src="https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg" />
+            <Card.Img variant="top" src={`${process.env.REACT_APP_API_URL}/${item.coverImage}`} />
             <Card.Body className="px-5">
                 <Card.Title>
                     {item.title}

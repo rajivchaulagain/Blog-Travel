@@ -5,7 +5,7 @@ import axios from "../setup/axios/SetupAxios"
  **********************/
 
 const getBlogs = async () => {
-    const { data } = await axios.get(`/user/blogs`)
+    const { data } = await axios.get(`/blogs`)
     return data
 };
 
@@ -17,21 +17,17 @@ const createBlog = async (values) => {
         description,
         coverImage
     }
-        ,
-        {
-            headers: { "Content-Type": "multipart/form-data" }
-        }
     );
     return response.data;
 };
 
-const recentBlogs = async () => {
-    const { data } = await axios.get(`/blogs/recent/blogs`)
+const recentBlogs = async() => {
+    const {data} = await axios.get(`/blogs/recent/blogs`)
     return data
 };
 
 
-export const blogServices = {
+export const publicServices = {
     getBlogs,
     createBlog,
     recentBlogs

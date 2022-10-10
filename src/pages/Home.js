@@ -7,15 +7,14 @@ import CustomCard from '../components/card/CustomCard'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import { useQuery } from '@tanstack/react-query'
-import { blogServices } from '../services/blogServices'
+import { publicServices } from '../services/publicServices'
+import Fallback from '../components/fallback/Fallback'
 
 const Home = () => {
 
-    const { data, isLoading } = useQuery(['blogs'], blogServices.getBlogs);
+    const { data, isLoading } = useQuery(['blogs'], publicServices.getBlogs);
 
-    if (isLoading) return "loading..."
-
-    console.log(data);
+    if (isLoading) return <Fallback />
 
     return (
         <>

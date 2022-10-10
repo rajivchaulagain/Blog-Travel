@@ -180,9 +180,6 @@ a.text-primary:focus {
   transition: 0.3s all ease-in-out;
 }
 
-.card:hover{
-
-}
 
 .card .card-title{
   font-size: 2.25rem;
@@ -209,7 +206,11 @@ a.text-primary:focus {
 .footer{
   background-color: #262626;
   padding: 6rem 0 !important; 
-  color: #fff;
+  color: #fff !important;
+}
+
+.footer a{
+  color: #fff !important;
 }
 
 .bottom-footer{
