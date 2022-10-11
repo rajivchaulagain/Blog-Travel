@@ -178,11 +178,12 @@ a.text-primary:focus {
   border: none;
   border-radius: 0 !important;
   transition: 0.3s all ease-in-out;
+  margin-bottom: 2rem;
 }
 
 
 .card .card-title{
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 

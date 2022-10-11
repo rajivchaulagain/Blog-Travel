@@ -6,7 +6,7 @@ function CustomCard({item}) {
     return (
         <Link to={`/blog/${item._id}`}>
         <Card>
-            <Card.Img variant="top" src={`${process.env.REACT_APP_API_URL}/${item.coverImage}`} />
+            <Card.Img variant="top" src={`http://localhost:8000/${item.coverImage}`} style={{height : '300px' , objectFit : 'cover'}} />
             <Card.Body className="px-5">
                 <Card.Title>
                     {item.title}

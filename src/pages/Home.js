@@ -1,6 +1,5 @@
 import React from 'react'
 import { Row, Col, Container } from 'react-bootstrap'
-import axios from 'axios'
 
 import LatestPosts from '../components/latestPosts/LatestPosts'
 import CustomCard from '../components/card/CustomCard'

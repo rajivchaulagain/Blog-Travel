@@ -1,7 +1,9 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 import useAuth from "../../hooks/useAuth";
 
@@ -9,9 +11,7 @@ import useAuth from "../../hooks/useAuth";
 
 import { initialValues, loginSchema } from "../../validation/AuthValidation";
 import { authServices } from "../../services/authServices";
-import { useMutation } from "@tanstack/react-query";
 import { Col, Container } from "react-bootstrap";
-import { toast } from "react-toastify";
 // import SocialMediaLogin from "./SocialMediaLogin";
 // import Navbar from '../../molecules/Navbar';
 
@@ -26,25 +26,23 @@ const Login = () => {
     const {
         mutate,
         isLoading,
-    } = useMutation(authServices.login, {
-        onSuccess: (data) => {
-            setAuth(data?.data)
-            toast.success('User logged in successfully')
-            navigate("/dashboard");
-            document.location.reload();
-        },
-        onError: (err) => {
-            toast.error(`${err || "Please try again later."}`)
-            // console.log(err);
-            // alert(err)
-        }
-    });
+    } = useMutation(authServices.login);
 
     const formik = useFormik({
         initialValues,
         validationSchema: loginSchema,
         onSubmit: (values, { setStatus, setSubmitting }) => {
-            mutate({ ...values });
+            mutate({ ...values }, {
+                onSuccess: (data) => {
+                    setAuth(data)
+                    toast.success('User logged in successfully')
+                    document.location.reload();
+                    navigate("/dashboard");
+                },
+                onError: (err) => {
+                    toast.error(`${err || "Please try again later."}`)
+                }
+            });
         },
     });
 

@@ -13,7 +13,7 @@ const LatestPosts = () => {
       <h4 className='fw-bold mb-4'>Latest Posts</h4>
       <Container>
         {
-          data.map((item) => (
+          data.slice(0 , 4).map((item) => (
             <>
               <LatestPostCard item={item} />
               <hr />

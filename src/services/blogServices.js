@@ -1,11 +1,16 @@
 import axios from "../setup/axios/SetupAxios"
 
 /*********************
-   public blogs routes
+   private blogs routes
  **********************/
 
 const getBlogs = async () => {
     const { data } = await axios.get(`/user/blogs`)
+    return data
+};
+
+const getBlog = async (id) => {
+    const { data } = await axios.get(`/user/blogs/${id}`)
     return data
 };
 
@@ -34,5 +39,6 @@ const recentBlogs = async () => {
 export const blogServices = {
     getBlogs,
     createBlog,
-    recentBlogs
+    recentBlogs,
+    getBlog
 };

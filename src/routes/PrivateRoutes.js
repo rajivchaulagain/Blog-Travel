@@ -21,13 +21,15 @@ const DashboardDefault = lazy(() => import('../pages/dashboard/Dashboard'));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
-const PrivateRoutes = [{
-  path: '/dashboard',
-  element: <DashboardDefault />
-}, {
-  path: '/blog-edit',
-  element: <AddEdit />
-}
-];
+const PrivateRoutes = {
+  path: '/',
+  element: <DashboardDefault />,
+  children: [
+    {
+      path: 'blog/add',
+      element: <AddEdit />
+    }
+  ]
+};
 
 export default PrivateRoutes;

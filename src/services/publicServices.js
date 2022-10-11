@@ -9,6 +9,11 @@ const getBlogs = async () => {
     return data
 };
 
+const getBlog = async(id) => {
+    const {data} = await axios.get(`/blogs/${id}`);
+    return data
+};
+
 const createBlog = async (values) => {
     console.log(values);
     const { title, description, coverImage } = values
@@ -26,9 +31,9 @@ const recentBlogs = async() => {
     return data
 };
 
-
 export const publicServices = {
     getBlogs,
+    getBlog,
     createBlog,
     recentBlogs
 };

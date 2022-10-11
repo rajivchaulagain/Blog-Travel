@@ -28,13 +28,13 @@ const ProductList = () => {
                         <tr>
                             <td>1</td>
                             <td>
-                                <img src={`${item.coverImage}`} alt={item.coverImage} />
+                                <img src={`http://localhost:8000/${item.coverImage}`} className="me-4" alt={item.coverImage} style={{ height: '50px', width: '50px', objectFit: 'cover' }} />
                                 {item.title}
                             </td>
                             <td>{item.description}</td>
                             <td>
-                                <Link to="/dashboard/blog/:id">View</Link>
-                                <Link>Edit</Link>
+                                {/* <Link to="/dashboard/blog/:id">View</Link> */}
+                                <Link to={`/dashboard/blog/edit/${item._id}`} className='mx-3'>Edit</Link>
                                 <Link>Delete</Link>
                             </td>
                         </tr>

@@ -5,6 +5,8 @@ export const getSession = () => {
  * setToken from localstorage
 */
 export const setSessionInLocalStorage = (token) => {
-    localStorage.setItem('session', JSON.stringify(token))
+    if(token){
+        localStorage.setItem('session', JSON.stringify(token))
+    }
     return true
 };

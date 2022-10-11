@@ -3,10 +3,11 @@ import * as Yup from 'yup'
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom'
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { blogServices } from '../../services/blogServices';
 import Layout from './Layout';
 import { toast } from 'react-toastify';
+import Fallback from '../../components/fallback/Fallback';
 
 const AddEdit = () => {
 
@@ -17,6 +18,8 @@ const AddEdit = () => {
     const queryClient = useQueryClient()
 
     let navigate = useNavigate();
+
+    const {data:blog , isLoading , isError} = useQuery(['blog'] , () => blogServices.getBlog(id))
 
     const mutation = useMutation(blogServices.createBlog, {
         onSuccess: () => {
@@ -33,15 +36,18 @@ const AddEdit = () => {
         })
     };
 
+    if(isLoading) return <Fallback />
+
     const registerSchema = Yup.object().shape({
 
     });
 
     const initialValues = {
-        title: '',
-        description: '',
-        coverImage: ''
+        title: isAddMode ? '' : blog.title,
+        description: isAddMode ? '' : blog.description,
+        coverImage: isAddMode ? '' : blog.coverImage
     };
+
 
     return (
         <Layout>

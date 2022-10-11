@@ -25,14 +25,10 @@ const PublicRoutes = {
   path: '/',
   element: <HomePage />,
   children: [
-    {
-      children: [
-        {
-          path: '/blog/:id',
+      {
+          path: 'blog:id',
           element: <DescriptionPage />
-        }
-      ]
-    }
+      }
   ]
 };
 
