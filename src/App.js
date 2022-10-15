@@ -34,7 +34,7 @@ const App = () => {
     <>
       <Suspense fallback={<Fallback />}>
         <QueryClientProvider client={queryClient}>
-          <ScrollToTop />
+          {/* <ScrollToTop /> */}
           {/* our app goes here */}
           <Routes>
             <Route index element={<Home />} />

@@ -1,71 +1,126 @@
+import { createStyles, Header, Autocomplete, Group, Burger, Button, Menu } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconSearch } from '@tabler/icons';
+import { MantineLogo } from '@mantine/ds';
+import useAuth from '../../hooks/useAuth'
 import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import useAuth from '../../hooks/useAuth';
-import { Dropdown } from 'react-bootstrap';
-import userImage from '../../assets/images/userImg.jpeg'
+import { UserButton } from '../../utils/UserButton';
+import logo from '../../assets/images/logo.png'
+import Logo from '../Logo/Logo';
+
+const useStyles = createStyles((theme) => ({
+  header: {
+    paddingLeft: theme.spacing.md,
+    paddingRight: theme.spacing.md,
+  },
+
+  inner: {
+    height: 56,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  links: {
+    [theme.fn.smallerThan('md')]: {
+      display: 'none',
+    },
+  },
+
+  search: {
+    [theme.fn.smallerThan('xs')]: {
+      display: 'none',
+    },
+  },
+
+  link: {
+    display: 'block',
+    lineHeight: 1,
+    padding: '8px 12px',
+    borderRadius: theme.radius.sm,
+    textDecoration: 'none',
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    '&:hover': {
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    },
+  },
+}));
 
 function CustomNavbar() {
-  const { token } = useAuth();
+  const links = [
+    {
+      label: "Home",
+      link: '/'
+    },
+    {
+      label: "Contact us",
+      link: '/contact-us'
+    }
+  ]
+  const { token } = useAuth()
+  const [opened, { toggle }] = useDisclosure(false);
+  const { classes } = useStyles();
+
+  const items = links?.map((link) => (
+    <a
+      key={link.label}
+      href={link.link}
+      className={classes.link}
+      onClick={(event) => event.preventDefault()}
+    >
+      {link.label}
+    </a>
+  ));
+
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand>
-          <Link to="/" className='text-light'>
-            Blog-app
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="#home">
-              <Link to="/">
-              Home
-              </Link>
-              </Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+    <Header height={56} className={classes.header}>
+      <div className="container">
+        <div className={classes.inner}>
+          <Group>
+            <Burger opened={opened} onClick={toggle} size="sm" />
+            <Link to="/">
+              <img src={logo} />
+            </Link>
+          </Group>
+          <Group>
+            <Group ml={50} spacing={5} className={classes.links}>
+              {items}
+            </Group>
             {
-              token ?
-                <Dropdown>
-                  <Dropdown.Toggle style={{ background: 'transparent', border: 'none' }} id="dropdown-basic">
-                    <img src={userImage} style={{ height: '50px', width: '50px', borderRadius: '50%' }} />
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
-                      <Link to="/dashboard">
-                        Dashboard
-                      </Link>
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      <Link to="/user/sign-out">
-                        Sign out
-                      </Link>
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-                :
-                <Link className="btn btn-light px-4" to="/user/login">
+              token ? (
+                <Group className={classes.links}>
+                  <Link
+                    to="/dashboard"
+                    className={classes.link}
+                  >
+                    Dashboard
+                  </Link>
+                  <Button>
+                    <Link to="/user/sign-out" className='text-light'>
+                      Log out
+                    </Link>
+                  </Button>
+                </Group>
+              ) : <Button>
+                <Link to="/user/login" className='text-light'>
                   Login
                 </Link>
+              </Button>
             }
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            <Autocomplete
+              className={classes.search}
+              placeholder="Search"
+              icon={<IconSearch size={16} stroke={1.5} />}
+              data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
+            />
+          </Group>
+        </div>
+      </div>
+    </Header>
   );
 }
 
-export default CustomNavbar;
+export default CustomNavbar

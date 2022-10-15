@@ -1,25 +1,32 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import { NavbarSimple } from '../../components/dashboard/Navbar/Navbar'
 import Footer from '../../components/footer/Footer'
-import Header from '../../components/header/Header'
+import CustomNavbar from '../../components/navbar/CustomNavbar'
 import Sidebar from '../../components/sidebar/Sidebar'
+import { StatsGrid } from '../../components/stats/Stats'
 
-const Layout = ({ children }) => {
+const Layout = ({ isStatsGrid = false, children }) => {
     return (
-        <div className='dashboard'>
-            <Header />
-            <Container className='mt-5'>
-                <Row>
-                    <Col md={2}>
-                        <Sidebar />
+        <div className='dashboard bg-light'>
+            <div className='d-flex'>
+                <NavbarSimple />
+                <Container>
+                    <CustomNavbar />
+                    {
+                        isStatsGrid && (
+                            <StatsGrid />
+                        )
+                    }
+                    <Col md={11} className="mx-auto">
+                        <div>
+                            {children}
+                        </div>
                     </Col>
-                    <Col md={10}>
-                        {children}
-                    </Col>
-                </Row>
-            </Container>
+                </Container>
+            </div >
             <Footer />
-        </div>
+        </div >
     )
 }
 

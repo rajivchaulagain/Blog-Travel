@@ -14,13 +14,19 @@ const getBlog = async (id) => {
     return data
 };
 
+const deleteBlog = async (id) => {
+    const response = await axios.delete(`/user/blogs/${id}`);
+    return response
+}
+
 const createBlog = async (values) => {
     console.log(values);
-    const { title, description, coverImage } = values
+    const { title, description, coverImage, category } = values
     const response = await axios.post(`/user/blogs`, {
         title,
         description,
-        coverImage
+        coverImage,
+        category
     }
         ,
         {
@@ -40,5 +46,6 @@ export const blogServices = {
     getBlogs,
     createBlog,
     recentBlogs,
-    getBlog
+    getBlog,
+    deleteBlog
 };

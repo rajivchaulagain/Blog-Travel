@@ -22,7 +22,7 @@
     top: 0;
     width: 100%;
     z-index: 1 !important;
-    padding-top: 3rem;
+    /* padding-top: 3rem; */
 }
 
 .navbar-nav{
