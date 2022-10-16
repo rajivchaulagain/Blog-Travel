@@ -10,7 +10,6 @@ import { publicServices } from '../services/publicServices'
 import Fallback from '../components/fallback/Fallback'
 import { EmailBanner } from '../components/suscribe/Suscribe'
 import Faq from '../components/faq/Faq'
-import { ContactUs } from '../components/contactUs/ContactUs'
 
 const Home = () => {
 

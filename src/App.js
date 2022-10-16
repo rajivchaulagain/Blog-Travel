@@ -12,7 +12,6 @@ import Register from './pages/auth/Register';
 import { ToastContainer } from 'react-toastify';
 import AddEdit from './pages/dashboard/AddEdit';
 import Description from './pages/Description';
-import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import Signout from './pages/auth/Signout';
 import Fallback from './components/fallback/Fallback';
 import { Route, Routes } from 'react-router-dom';

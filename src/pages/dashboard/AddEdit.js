@@ -21,7 +21,7 @@ const AddEdit = () => {
 
     let navigate = useNavigate();
 
-    const { data: blog, isLoading, isError } = useQuery(['blog'], () => blogServices.getBlog(id))
+    const { data: blog, isLoading } = useQuery(['blog'], () => blogServices.getBlog(id))
 
     const mutation = useMutation(blogServices.createBlog, {
         onSuccess: () => {

@@ -1,17 +1,12 @@
 import { useState } from 'react';
-import { createStyles, Navbar, Group, Code } from '@mantine/core';
+import { createStyles, Navbar, Group } from '@mantine/core';
 import {
   IconBellRinging,
   IconFingerprint,
   IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
   IconReceipt2,
-  IconSwitchHorizontal,
   IconLogout,
 } from '@tabler/icons';
-import logo from '../../../assets/images/logo.png'
 import Logo from '../../Logo/Logo';
 import { Link } from 'react-router-dom';
 

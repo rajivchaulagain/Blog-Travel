@@ -1,9 +1,8 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container } from 'react-bootstrap'
 import { NavbarSimple } from '../../components/dashboard/Navbar/Navbar'
 import Footer from '../../components/footer/Footer'
 import CustomNavbar from '../../components/navbar/CustomNavbar'
-import Sidebar from '../../components/sidebar/Sidebar'
 import { StatsGrid } from '../../components/stats/Stats'
 
 const Layout = ({ isStatsGrid = false, children }) => {

@@ -12,7 +12,7 @@ const Signout = () => {
         setAuth('');
         document.location.reload();
         navigate('/')
-    }, [])
+    }, [navigate , setAuth])
 }
 
 export default Signout

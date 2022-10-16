@@ -1,12 +1,9 @@
-import { createStyles, Header, Autocomplete, Group, Burger, Button, Menu } from '@mantine/core';
+import { createStyles, Header, Autocomplete, Group, Burger, Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconSearch } from '@tabler/icons';
-import { MantineLogo } from '@mantine/ds';
 import useAuth from '../../hooks/useAuth'
 import { Link } from 'react-router-dom';
-import { UserButton } from '../../utils/UserButton';
 import logo from '../../assets/images/logo.png'
-import Logo from '../Logo/Logo';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -82,7 +79,7 @@ function CustomNavbar() {
           <Group>
             <Burger opened={opened} onClick={toggle} size="sm" />
             <Link to="/">
-              <img src={logo} />
+              <img src={logo} alt="logo" />
             </Link>
           </Group>
           <Group>

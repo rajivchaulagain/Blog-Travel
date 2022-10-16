@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link , useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
@@ -16,7 +16,6 @@ const Register = () => {
   const navigate = useNavigate();
   const {
     mutate,
-    isLoading,
   } = useMutation(authServices.register, {
     onSuccess: (data) => {
       setAuth(data)

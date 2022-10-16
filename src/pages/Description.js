@@ -14,7 +14,7 @@ import { publicServices } from '../services/publicServices'
 
 const Description = () => {
     const { id } = useParams();
-    const { data, isLoading, isError } = useQuery(['blog'], () => publicServices.getBlog(id));
+    const { data, isLoading } = useQuery(['blog'], () => publicServices.getBlog(id));
     if (isLoading) return <Fallback />;
     function createMarkup(theExactHtmlWithTag) {
         return { __html: theExactHtmlWithTag };
@@ -25,7 +25,7 @@ const Description = () => {
             <Container className="my-5">
                 <Row>
                     <Col md={9}>
-                        <img src={`http://localhost:8000/${data.coverImage}`} className='w-100' style={{ height: '500px' }} />
+                        <img src={`http://localhost:8000/${data.coverImage}`} alt="coverimage" className='w-100' style={{ height: '500px' }} />
                         <div className='card'>
                             <div className='card-body px-5'>
                                 <div className='pt-5'>
