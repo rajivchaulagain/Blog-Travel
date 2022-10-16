@@ -3,7 +3,7 @@ import logo from '../../assets/images/logo.png'
 
 const Logo = () => {
     return (
-        <img src={logo} style={{ width: '100%', height: '50px', objectFit: 'cover' }} />
+        <img src={logo} alt="logo" style={{ width: '100%', height: '50px', objectFit: 'cover' }} />
     )
 }
 

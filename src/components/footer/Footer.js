@@ -44,7 +44,6 @@
 
 import { createStyles, Text, Container, ActionIcon, Group } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons';
-import { MantineLogo } from '@mantine/ds';
 import moment from 'moment';
 import Logo from '../Logo/Logo';
 

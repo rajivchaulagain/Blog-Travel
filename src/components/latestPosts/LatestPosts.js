@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { Col, Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { publicServices } from '../../services/publicServices'
 import Fallback from '../fallback/Fallback'
 import LatestPostCard from './LatestPostCard'
